@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <title>Web Game</title>
+    <style>
+        #game-container {
+            width: 1500px;
+            height: 500px;
+            border: 2px solid black;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #player {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .monster {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+        }
+
+        .trap {
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="player"></div>
+    </div>
+
+    <script>
+        const player = document.getElementById('player');
+        const gameContainer = document.getElementById('game-container');
+
+        let playerX = 0;
+        let playerY = 0;
+
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+
+            if (key === 'ArrowRight' && playerX < gameContainer.clientWidth - 50) {
+                playerX += 50;
+            } else if (key === 'ArrowLeft' && playerX > 0) {
+                playerX -= 50;
+            } else if (key === 'ArrowDown' && playerY < gameContainer.clientHeight - 50) {
+                playerY += 50;
+            } else if (key === 'ArrowUp' && playerY > 0) {
+                playerY -= 50;
+            }
+
+            player.style.left = playerX + 'px';
+            player.style.top = playerY + 'px';
+        });
+    </script>
+<script src="./main.js"></script>
+</body>
+</html>
